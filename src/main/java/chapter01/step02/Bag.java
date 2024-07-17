@@ -1,4 +1,4 @@
-package chapter01.step01;
+package chapter01.step02;
 
 import chapter01.instance.Invitation;
 import chapter01.instance.Ticket;

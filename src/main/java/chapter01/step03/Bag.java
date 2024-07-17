@@ -1,4 +1,4 @@
-package chapter01.step01;
+package chapter01.step03;
 
 import chapter01.instance.Invitation;
 import chapter01.instance.Ticket;
@@ -14,32 +14,29 @@ public class Bag {
     private Invitation invitation; // 이벤트에 당첨되지 않은 관람객은 초대장을 가지고있지 않을 것
     private Ticket ticket;
 
-    public Bag(Long amount) { // 초대장 없이 현금만 가진 경우
-        this(null, amount);
+    // bag에서 이루어지는 행위를 bag 스스로 수행하도록 구현
+    public Long hold(Ticket ticket) {
+        if(hasInvitation()) {
+            setTicket(ticket);
+
+            return 0L;
+        } else {
+            setTicket(ticket);
+            minusAmount(ticket.getFee());
+
+            return ticket.getFee();
+        }
     }
 
-    public Bag(Invitation invitation, Long amount) { // 초대장과 현금을 가진 경우
-        this.invitation = invitation;
-        this.amount = amount;
-    }
-
-    public boolean hasInvitation() {
+    private boolean hasInvitation() {
         return invitation != null;
     }
 
-    public boolean hasTicket() {
-        return ticket != null;
-    }
-
-    public void setTicket(Ticket ticket) {
+    private void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
 
-    public void minusAmount(Long amount) {
+    private void minusAmount(Long amount) {
         this.amount -= amount;
-    }
-
-    public void plusAmount(Long amount) {
-        this.amount += amount;
     }
 }
