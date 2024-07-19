@@ -1,4 +1,4 @@
-package chaper02.movie.step01.pricing;
+package chaper02.movie.step02.pricing;
 
 import chaper02.movie.step01.DiscountCondition;
 import chaper02.movie.step01.Screening;

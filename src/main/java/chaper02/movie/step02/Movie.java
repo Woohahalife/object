@@ -1,6 +1,8 @@
-package chaper02.movie.step01;
+package chaper02.movie.step02;
 
 import chaper02.money.Money;
+
+import java.time.Duration;
 
 public class Movie {
 
@@ -9,7 +11,7 @@ public class Movie {
     private Money fee; // 기본 요금
     private DiscountPolicy discountPolicy; // 할인 정책
 
-    public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
+    public Movie(String title, Duration runningTime, Money fee, DefaultDiscountPolicy discountPolicy) {
         this.title = title;
         this.runningTime = runningTime;
         this.fee = fee;
@@ -18,6 +20,11 @@ public class Movie {
 
     public Money getFee() {
         return fee;
+    }
+
+    // 실행 시점에 DiscountPolicy를 변경할 수 있도록 개선
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
     }
 
     public Money calculateMovieFee(Screening screening) {
